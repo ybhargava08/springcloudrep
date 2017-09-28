@@ -1,0 +1,88 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.yash.sentence</groupId>
+  <artifactId>sentence</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <name>sentence</name>
+  <description>sentence</description>
+  
+   <parent>
+  <groupId>org.springframework.boot</groupId>
+  <artifactId>spring-boot-starter-parent</artifactId>
+  <version>1.5.7.RELEASE</version>
+  </parent>
+  
+  <dependencyManagement>
+  <dependencies>
+   <dependency>
+    <groupId>org.springframework.cloud</groupId>
+    <artifactId>spring-cloud-dependencies</artifactId>
+    <version>Dalston.SR3</version>
+    <scope>import</scope>
+    <type>pom</type>
+   </dependency>
+     </dependencies>
+  </dependencyManagement> 
+  
+   <dependencies>
+   <!-- this config is for configuration client to read configs dynamically -->
+    <dependency>
+   <groupId>org.springframework.cloud</groupId>
+    <artifactId>spring-cloud-starter-config</artifactId>
+   </dependency>
+   
+   <!-- This fetches latest configs for hystrix and others -->
+   <dependency>
+   <groupId>org.springframework.boot</groupId>
+   <artifactId>spring-boot-starter-actuator</artifactId>
+   </dependency>
+  
+  <!--  This is for eureka server for service discovery -->
+   <dependency>
+    <groupId>org.springframework.cloud</groupId>
+    <artifactId>spring-cloud-starter-eureka-server</artifactId>
+   </dependency>
+   
+   <!--  This is for web dependency -->
+     <dependency>
+     <groupId>org.springframework.boot</groupId>
+     <artifactId>spring-boot-starter-web</artifactId>
+     </dependency>
+     
+     <!--  This is for feign clients which internally created implementation for rest template , we have to 
+         provide only interface -->
+       <dependency>
+    <groupId>org.springframework.cloud</groupId>
+    <artifactId>spring-cloud-starter-feign</artifactId>
+   </dependency>
+   
+   <!-- This is for hystrix circuit breaker to put a fallback in case a service is giving errors -->
+         <dependency>
+    <groupId>org.springframework.cloud</groupId>
+    <artifactId>spring-cloud-starter-hystrix</artifactId>
+   </dependency>
+   
+    <!-- This is to monitor different services in a dashboard and check if hystrix circuit is open or closed -->
+         <dependency>
+    <groupId>org.springframework.cloud</groupId>
+    <artifactId>spring-cloud-starter-hystrix-dashboard</artifactId>
+   </dependency>
+   
+   <!--  This is to aggregate monitoring from all hystrix dashboards in a single place -->
+        <dependency>
+    <groupId>org.springframework.cloud</groupId>
+    <artifactId>spring-cloud-starter-turbine</artifactId>
+   </dependency>
+   
+   </dependencies>
+  
+     <build>
+   <plugins>
+   <plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+   </plugins>
+   </build>
+  
+</project>
