@@ -1,0 +1,147 @@
+eureka:
+ client:
+  serviceUrl:
+   defaultZone: http://localhost:8010/eureka/
+spring:
+ rabbitmq:
+  host: crane.rmq.cloudamqp.com
+  port: 5671
+  username: zbgotrsf
+  password: rH6WQwOWUlhVT86gNkmriuvTS-zBlHT8
+  addresses: amqp://zbgotrsf:rH6WQwOWUlhVT86gNkmriuvTS-zBlHT8@crane.rmq.cloudamqp.com/zbgotrsf
+management:
+ security:
+  enabled: false
+
+---
+spring:
+ profiles: myprofile
+ 
+words: yashi
+
+---
+
+spring:
+ profiles: anoprofile
+  
+words: bhargavas
+
+---
+
+spring:
+ profiles: adjective
+server:
+ port: ${PORT:${SERVER_PORT:0}}
+words: reasonable,leaky,suspicious,ordinary,unlikely
+
+---
+
+spring:
+ profiles: article
+server:
+ port: ${PORT:${SERVER_PORT:0}}
+words: a,an,the
+
+---
+
+spring:
+ profiles: noun
+server:
+ port: ${PORT:${SERVER_PORT:0}}
+words: boat,book,vote,seat,backpack,partition,groundhog
+ 
+---
+
+spring:
+ profiles: sentence
+server:
+ port: 8020
+turbine:
+ aggregator:
+  clusterConfig: SAMPLE-HYSTRIX-AGGREGATE
+ appConfig: SAMPLE-HYSTRIX-AGGREGATE
+---
+
+spring:
+ profiles: subject
+server:
+ port: ${PORT:${SERVER_PORT:0}}
+words: I,You,He,She,It
+
+---
+
+spring:
+ profiles: verb
+server:
+ port: ${PORT:${SERVER_PORT:0}}
+words: ran,knew,had,saw,bought
+
+---
+
+spring:
+ profiles: eureka
+server:
+ port: 8010
+
+---
+
+
+spring:
+ profiles: sentenceZuul
+ thymeleaf:
+  cache: false
+  prefix: classpath:/templates/
+  suffix: .html
+server:
+ port: 8030
+logging:
+ level:
+  org:
+   springframework:
+    web: DEBUG
+ file: C:\Users\ybhargava\Desktop\springcloudtest_jars\logs\application.log
+zuul:
+ routes:
+  adjectiveRoute:
+   path: /
+   serviceId: ADJECTIVE
+   stripPrefix: false
+hystrix:
+ command:
+  default:
+   execution:
+    isolation:
+     thread:
+      timeoutInMilliseconds: 60000
+
+---
+spring:
+ profiles: dataflowsink
+server:
+ port: ${PORT:${SERVER_PORT:0}}
+logging:
+ level:
+  org:
+   springframework:
+    web: INFO
+ file: C:\Users\ybhargava\Desktop\springcloudtest_jars\logs\dataflow.log
+
+---
+spring:
+ profiles: dataflowsource
+server:
+ port: ${PORT:${SERVER_PORT:0}}
+
+
+---
+spring:
+ profiles: dataflowprocessor
+server:
+ port: ${PORT:${SERVER_PORT:0}}
+
+---
+spring:
+ profiles: springdataflowshell
+server:
+ port: ${PORT:${SERVER_PORT:0}}
+   
