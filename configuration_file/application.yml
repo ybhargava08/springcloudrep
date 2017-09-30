@@ -68,8 +68,6 @@ words: ran,knew,had,saw,bought
 
 spring:
  profiles: eureka
-server:
- port: 8010
 eureka:
  client:
   registerWithEureka: false
