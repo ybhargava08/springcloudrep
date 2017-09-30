@@ -13,18 +13,6 @@ management:
  security:
   enabled: false
 
----
-spring:
- profiles: myprofile
- 
-words: yashi
-
----
-
-spring:
- profiles: anoprofile
-  
-words: bhargavas
 
 ---
 
@@ -82,7 +70,10 @@ spring:
  profiles: eureka
 server:
  port: 8010
-
+eureka:
+ client:
+  registerWithEureka: false
+  fetchRegistry: false
 ---
 
 
