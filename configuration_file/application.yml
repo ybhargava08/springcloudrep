@@ -153,5 +153,5 @@ logging:
    springframework:
     web: DEBUG
  file: C:\Users\ybhargava\Desktop\springcloudtest_jars\logs\mongodb.log
-dataservice: redis
+dataservice: mongo
 
