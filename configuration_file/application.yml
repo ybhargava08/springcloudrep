@@ -134,3 +134,17 @@ spring:
 server:
  port: ${PORT:${SERVER_PORT:0}}
 
+---
+spring:
+ profiles: springdatamongoDB
+ data:
+  mongodb:
+   uri : mongodb://ybhargava08:Earth2013@cluster0-shard-00-00-1na64.mongodb.net:27017,cluster0-shard-00-01-1na64.mongodb.net:27017,cluster0-shard-00-02-1na64.mongodb.net:27017/mymongoDB?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin
+server:
+ port: 8090
+logging:
+ level:
+  org:
+   springframework:
+    web: INFO
+ file: C:\Users\ybhargava\Desktop\springcloudtest_jars\logs\mongodb.log
