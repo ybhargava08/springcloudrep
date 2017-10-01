@@ -151,7 +151,7 @@ logging:
  level:
   org:
    springframework:
-    web: DEBUG
+    web: INFO
  file: C:\Users\ybhargava\Desktop\springcloudtest_jars\logs\mongodb.log
 dataservice: mongo
 
