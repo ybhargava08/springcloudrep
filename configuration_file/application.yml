@@ -169,3 +169,4 @@ logging:
    springframework:
     web: DEBUG
  file: C:\Users\ybhargava\Desktop\springcloudtest_jars\logs\retreivalMS.log
+limit: 5 
