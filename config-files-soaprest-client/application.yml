@@ -32,6 +32,10 @@ spring:
  profiles: sendMS
 server:
  port: 9020
+zuul:
+ routes:
+  retreivalms:
+   path: /retreivalms
 ---
 spring:
  profiles: retreivalMS
