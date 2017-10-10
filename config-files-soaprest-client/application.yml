@@ -33,7 +33,7 @@ spring:
 server:
  port: 9020
 zuul:
- prefix: /service 
+ prefix: /service
 ---
 spring:
  profiles: retreivalMS
