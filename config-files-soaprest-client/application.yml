@@ -32,8 +32,6 @@ spring:
  profiles: sendMS
 server:
  port: 9020
-zuul:
- prefix: /service
 ---
 spring:
  profiles: retreivalMS
