@@ -38,6 +38,13 @@ zuul:
    path: /retreivalms
   sendms:
    path: /sendms
+hystrix:
+ command:
+  default:
+   execution:
+    isolation:
+     thread:
+      timeoutInMilliseconds: 120000   
 ---
 spring:
  profiles: retreivalMS
