@@ -36,6 +36,8 @@ zuul:
  routes:
   retreivalms:
    path: /retreivalms
+  sendms:
+   path: /sendms
 ---
 spring:
  profiles: retreivalMS
