@@ -27,6 +27,9 @@ server:
 
 spring:
  profiles: sendMS
+ resources:
+  static-locations: file:///C:/Users/ybhargava/SpringCloud/SendMS/src/main/resources/static/
+  cache-period: 0
 server:
  port: 9020
 zuul:
