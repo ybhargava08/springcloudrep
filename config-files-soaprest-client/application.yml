@@ -27,6 +27,8 @@ server:
 
 spring:
  profiles: sendMS
+ resources:
+  static-locations: classpath:/resources/
 server:
  port: 9020
 zuul:
