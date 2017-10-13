@@ -38,6 +38,8 @@ zuul:
    path: /retreivalandsavems
   sendms:
    path: /sendms
+  eventpollerms:
+   path: /eventpollerms
 hystrix:
  command:
   default:
