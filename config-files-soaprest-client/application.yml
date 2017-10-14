@@ -9,10 +9,21 @@ spring:
   username: zbgotrsf
   password: rH6WQwOWUlhVT86gNkmriuvTS-zBlHT8
   addresses: amqp://zbgotrsf:rH6WQwOWUlhVT86gNkmriuvTS-zBlHT8@crane.rmq.cloudamqp.com/zbgotrsf
-management:
- security:
-  enabled: false
-  
+hystrix:
+ threadpool.default.coreSize: "20"
+ threadpool.default.maxQueueSize: "500000"
+ threadpool.default.keepAliveTimeMinutes: "2"
+ threadpool.default.queueSizeRejectionThreshold: "500000"
+ command:
+   default:
+     fallback.isolation.semaphore.maxConcurrentRequests: "20"
+     execution:
+       timeout:
+         enabled: "false"
+       isolation:
+         strategy: "THREAD"
+         thread:
+           timeoutInMilliseconds: "30000"  
 ---
 
 spring:
@@ -38,15 +49,6 @@ zuul:
    path: /retreivalandsavems
   sendms:
    path: /sendms
-  eventpollerms:
-   path: /eventpollerms
-hystrix:
- command:
-  default:
-   execution:
-    isolation:
-     thread:
-      timeoutInMilliseconds: 120000   
 ---
 spring:
  profiles: retreivalandsaveMS
@@ -56,9 +58,3 @@ spring:
 server:
  port: 9010
 limit: 5
-
----
-spring:
- profiles: eventpollerms
-server:
- port: 9030
