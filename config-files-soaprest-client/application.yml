@@ -28,6 +28,10 @@ hystrix:
 
 spring:
  profiles: eureka
+ mvc:
+  view:
+   prefix: /static/
+   suffix: .html
 eureka:
  client:
   registerWithEureka: false
