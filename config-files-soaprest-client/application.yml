@@ -28,9 +28,6 @@ hystrix:
 
 spring:
  profiles: eureka
- mvc:
-  view:
-   suffix: .html
 eureka:
  client:
   registerWithEureka: false
@@ -44,6 +41,10 @@ spring:
  resources:
   static-locations: file:///C:/Users/ybhargava/SpringCloud/SendMS/src/main/resources/static/
   cache-period: 0
+ mvc:
+  view:
+   prefix: /resources/static/
+   suffix: .html
 server:
  port: 9020
 zuul:
