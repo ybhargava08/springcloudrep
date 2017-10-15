@@ -1,0 +1,70 @@
+eureka:
+ client:
+  serviceUrl:
+   defaultZone: http://localhost:8010/eureka/
+spring:
+ rabbitmq:
+  host: crane.rmq.cloudamqp.com
+  port: 5671
+  username: zbgotrsf
+  password: rH6WQwOWUlhVT86gNkmriuvTS-zBlHT8
+  addresses: amqp://zbgotrsf:rH6WQwOWUlhVT86gNkmriuvTS-zBlHT8@crane.rmq.cloudamqp.com/zbgotrsf
+hystrix:
+ threadpool.default.coreSize: "20"
+ threadpool.default.maxQueueSize: "500000"
+ threadpool.default.keepAliveTimeMinutes: "2"
+ threadpool.default.queueSizeRejectionThreshold: "500000"
+ command:
+   default:
+     fallback.isolation.semaphore.maxConcurrentRequests: "20"
+     execution:
+       timeout:
+         enabled: "false"
+       isolation:
+         strategy: "THREAD"
+         thread:
+           timeoutInMilliseconds: "30000"  
+---
+
+spring:
+ profiles: eureka
+eureka:
+ client:
+  registerWithEureka: false
+  fetchRegistry: false
+server:
+ port: 8010
+---
+
+spring:
+ profiles: sendMS
+ resources:
+  static-locations: file:///C:/Users/ybhargava/SpringCloud/SendMS/src/main/resources/static/
+  cache-period: 0
+ mvc:
+  view:
+   prefix: /resources/static/
+   suffix: .html
+server:
+ port: 9020
+zuul:
+ routes:
+  retreivalandsavems:
+   path: /retreivalandsavems
+  sendms:
+   path: /sendms
+---
+spring:
+ profiles: retreivalandsaveMS
+ data:
+  mongodb:
+   uri: mongodb://ybhargava08:Earth2013@cluster0-shard-00-00-1na64.mongodb.net:27017,cluster0-shard-00-01-1na64.mongodb.net:27017,cluster0-shard-00-02-1na64.mongodb.net:27017/mymongoDB?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin 
+server:
+ port: 9010
+limit: 5
+logging:
+ level:
+  org:
+   springframework:
+    web: INFO
+ file: C:\Users\ybhargava\Desktop\springcloudtest_jars\logs\retreivalandsaveMS.log
