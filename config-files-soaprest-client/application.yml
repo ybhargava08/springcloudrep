@@ -30,7 +30,6 @@ spring:
  profiles: eureka
  mvc:
   view:
-   prefix: /
    suffix: .html
 eureka:
  client:
