@@ -35,8 +35,6 @@ eureka:
  client:
   registerWithEureka: false
   fetchRegistry: false
- instance:
-  preferIpAddress: true  
 ---
 
 spring:
@@ -61,7 +59,10 @@ logging:
   org:
    springframework:
     web: DEBUG
- file: C:\Users\ybhargava\Desktop\springcloudtest_jars\logs\sendms.log   
+ file: C:\Users\ybhargava\Desktop\springcloudtest_jars\logs\sendms.log
+eureka:
+ instance:
+  preferIpAddress: true
 ---
 spring:
  profiles: retreivalandsaveMS
@@ -69,3 +70,6 @@ spring:
   mongodb:
    uri: mongodb://ybhargava08:Earth2013@cluster0-shard-00-00-1na64.mongodb.net:27017,cluster0-shard-00-01-1na64.mongodb.net:27017,cluster0-shard-00-02-1na64.mongodb.net:27017/mymongoDB?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin
 limit: 5
+eureka:
+ instance:
+  preferIpAddress: true
