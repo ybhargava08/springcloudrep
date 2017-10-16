@@ -60,9 +60,6 @@ logging:
    springframework:
     web: DEBUG
  file: C:\Users\ybhargava\Desktop\springcloudtest_jars\logs\sendms.log
-eureka:
- instance:
-  prefer-ip-address: true
 ---
 spring:
  profiles: retreivalandsaveMS
