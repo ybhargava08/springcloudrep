@@ -1,0 +1,7 @@
+---
+applications:
+- name: retreiveandsavems
+  memory: 768M
+  buildpack: https://github.com/cloudfoundry/java-buildpack.git
+  domain: cfapps.io
+  timeout: 60
