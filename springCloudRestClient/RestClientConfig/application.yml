@@ -62,7 +62,7 @@ logging:
  file: C:\Users\ybhargava\Desktop\springcloudtest_jars\logs\sendms.log
 eureka:
  instance:
-  preferIpAddress: true
+  prefer-ip-address: true
 ---
 spring:
  profiles: retreivalandsaveMS
@@ -72,4 +72,4 @@ spring:
 limit: 5
 eureka:
  instance:
-  preferIpAddress: true
+  prefer-ip-address: true
