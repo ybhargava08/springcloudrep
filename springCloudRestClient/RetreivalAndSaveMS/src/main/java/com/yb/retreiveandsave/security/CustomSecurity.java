@@ -13,7 +13,7 @@ public class CustomSecurity extends WebSecurityConfigurerAdapter {
 	
 	
 	protected void configure(HttpSecurity security) throws Exception{
-        security.authorizeRequests().antMatchers("/","/info","/status","/save","/getLatestData","/getTagCloudData","/fetchDataBasedOnInput/*")
+        security.csrf().disable().authorizeRequests().antMatchers("/","/info","/status","/save","/getLatestData","/getTagCloudData","/fetchDataBasedOnInput/*")
         .permitAll().anyRequest().authenticated().and()
         .httpBasic().and().authorizeRequests().antMatchers("/deleteAll").hasAuthority("ADMIN").anyRequest().authenticated();
 	}
