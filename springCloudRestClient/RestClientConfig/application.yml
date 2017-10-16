@@ -20,10 +20,13 @@ hystrix:
      execution:
        timeout:
          enabled: "false"
-       isolation:
-         strategy: "THREAD"
-         thread:
-           timeoutInMilliseconds: "30000"  
+#       isolation:
+#         strategy: "THREAD"
+#         thread:
+#           timeoutInMilliseconds: "30000"
+ribbon:
+ ReadTimeout: 100000
+ ConnectTimeout: 100000
 ---
 
 spring:
