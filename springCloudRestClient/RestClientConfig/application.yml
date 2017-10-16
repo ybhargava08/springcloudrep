@@ -73,3 +73,5 @@ limit: 5
 eureka:
  instance:
   prefer-ip-address: true
+  instance-id==${spring.cloud.client.hostname}:${spring.application.name}:${spring.application.instance_id:${random.value}}
+
