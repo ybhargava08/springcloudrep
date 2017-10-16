@@ -51,6 +51,12 @@ zuul:
    path: /retreivalandsavems
   sendms:
    path: /sendms
+logging:
+ level:
+  org:
+   springframework:
+    web: DEBUG
+ file: C:\Users\ybhargava\Desktop\springcloudtest_jars\logs\sendms.log   
 ---
 spring:
  profiles: retreivalandsaveMS
