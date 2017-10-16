@@ -72,6 +72,11 @@ spring:
 limit: 5
 eureka:
  instance:
-  prefer-ip-address: true
-  instance-id==${spring.cloud.client.hostname}:${spring.application.name}:${spring.application.instance_id:${random.value}}
+  hostname: retreiveandsavems.cfapps.io
+  secure-port-enabled: true
+  non-secure-port-enabled: false
+  secure-port: 443
+  health-check-url: https://${eureka.instance.hostname}:${eureka.instance.secure-port}/ctx/health
+  status-page-url: https://${eureka.instance.hostname}:${eureka.instance.secure-port}/ctx/info
+  home-page-url: https://${eureka.instance.hostname}:${eureka.instance.secure-port}/ctx
 
