@@ -1,7 +1,7 @@
 eureka:
  client:
   serviceUrl:
-   defaultZone: http://localhost:8010/eureka/
+   defaultZone: https://ybeurekaserver.cfapps.io/eureka/
 spring:
  rabbitmq:
   host: crane.rmq.cloudamqp.com
@@ -35,8 +35,8 @@ eureka:
  client:
   registerWithEureka: false
   fetchRegistry: false
-server:
- port: 8010
+#server:
+ #port: 8010
 ---
 
 spring:
