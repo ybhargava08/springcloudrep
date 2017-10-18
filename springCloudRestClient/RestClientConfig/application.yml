@@ -1,7 +1,7 @@
 eureka:
  client:
   serviceUrl:
-   defaultZone: https://localhost:8010/eureka/
+   defaultZone: http://localhost:8010/eureka/
 spring:
  rabbitmq:
   host: crane.rmq.cloudamqp.com
