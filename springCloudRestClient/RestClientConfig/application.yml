@@ -67,7 +67,7 @@ spring:
  profiles: retreivalandsaveMS
  data:
   mongodb:
-   uri: mongodb://ybhargava08:E@rth2013@mymongocluster-shard-00-00-nmxff.mongodb.net:27017,mymongocluster-shard-00-01-nmxff.mongodb.net:27017,mymongocluster-shard-00-02-nmxff.mongodb.net:27017/test?ssl=true&replicaSet=MyMongoCluster-shard-0&authSource=admin
+   uri: mongodb://ybhargava08:yash635@mymongocluster-shard-00-00-nmxff.mongodb.net:27017,mymongocluster-shard-00-01-nmxff.mongodb.net:27017,mymongocluster-shard-00-02-nmxff.mongodb.net:27017/test?ssl=true&replicaSet=MyMongoCluster-shard-0&authSource=admin
 limit: 5
 eureka:
  instance:
@@ -84,7 +84,7 @@ spring:
  profiles: retreivalandsaveMSLocal
  data:
   mongodb:
-   uri: mongodb://ybhargava08:E@rth2013@mymongocluster-shard-00-00-nmxff.mongodb.net:27017,mymongocluster-shard-00-01-nmxff.mongodb.net:27017,mymongocluster-shard-00-02-nmxff.mongodb.net:27017/test?ssl=true&replicaSet=MyMongoCluster-shard-0&authSource=admin
+   uri: mongodb://ybhargava08:yash635@mymongocluster-shard-00-00-nmxff.mongodb.net:27017,mymongocluster-shard-00-01-nmxff.mongodb.net:27017,mymongocluster-shard-00-02-nmxff.mongodb.net:27017/test?ssl=true&replicaSet=MyMongoCluster-shard-0&authSource=admin
 limit: 5
 server:
  port: 9010
