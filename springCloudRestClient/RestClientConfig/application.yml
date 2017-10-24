@@ -74,7 +74,7 @@ spring:
 limit: 5
 eureka:
  instance:
-  hostname: retreiveandsavems.cf-tcpapps.io
+  hostname: retreiveandsavems.cfapps.io
   secure-port-enabled: true
   non-secure-port-enabled: false
   secure-port: 443
