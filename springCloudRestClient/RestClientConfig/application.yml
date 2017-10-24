@@ -89,3 +89,9 @@ spring:
 limit: 5
 server:
  port: 9010
+ 
+---
+spring:
+ profiles: zipkinserver
+server:
+ port: 9411
