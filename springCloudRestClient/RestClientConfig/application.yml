@@ -81,6 +81,7 @@ eureka:
   health-check-url: https://${eureka.instance.hostname}:${eureka.instance.secure-port}/health
   status-page-url: https://${eureka.instance.hostname}:${eureka.instance.secure-port}/info
   home-page-url: https://${eureka.instance.hostname}:${eureka.instance.secure-port}/
+useTST: true  
 ---
 spring:
  profiles: retreivalandsaveMSLocal
