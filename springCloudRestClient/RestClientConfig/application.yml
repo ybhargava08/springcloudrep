@@ -91,7 +91,7 @@ spring:
 limit: 5
 server:
  port: 9010
- 
+useTST: true 
 ---
 spring:
  profiles: zipkinserver
