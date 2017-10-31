@@ -81,7 +81,7 @@ eureka:
   health-check-url: https://${eureka.instance.hostname}:${eureka.instance.secure-port}/health
   status-page-url: https://${eureka.instance.hostname}:${eureka.instance.secure-port}/info
   home-page-url: https://${eureka.instance.hostname}:${eureka.instance.secure-port}/
-useTST: false  
+useTST: true
 ---
 spring:
  profiles: retreivalandsaveMSLocal
@@ -91,7 +91,7 @@ spring:
 limit: 5
 server:
  port: 9010
-useTST: true 
+useTST: true
 ---
 spring:
  profiles: zipkinserver
