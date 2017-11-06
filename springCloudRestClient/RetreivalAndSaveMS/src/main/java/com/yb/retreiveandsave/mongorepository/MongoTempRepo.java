@@ -49,12 +49,14 @@ public class MongoTempRepo {
 	
 public boolean saveData(ResourceBean bean){
 		
-		Query query = new Query(Criteria.where("tag").is(bean.getTag()));
+		Query query = new Query(Criteria.where("id").is(bean.getId()));
 		
 		Update update = new Update();
 		
+		update.set("tag",bean.getTag());
 		update.set("url", bean.getUrl());
 		update.set("requestBody", bean.getRequestBody());
+		update.set("requestCategory",bean.getRequestCategory());
 		update.set("headers", bean.getHeaders());
 		update.set("lastExecutionDate", bean.getLastExecutionDate());
 		update.set("requestType",bean.getRequestType());
@@ -63,4 +65,14 @@ public boolean saveData(ResourceBean bean){
 		WriteResult wr = template.upsert(query, update, ResourceBean.class);
 		return wr.wasAcknowledged();
 	}
+
+/*public List<ResourceBean> getDataForPreprocessing(){
+	Query query = new Query();
+	query.fields().include("tag");
+	query.fields().include("url");
+	query.fields().include("requestCategory");
+	query.fields().include("requestType");
+	
+	return template.find(query, ResourceBean.class);
+	}*/
 }
