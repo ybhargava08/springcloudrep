@@ -9,6 +9,10 @@ import resourcebean.ResourceBean;
 
 public interface CustomRep extends MongoRepository<ResourceBean, String>{
  
-	@Query("{'$or': [{'tag' : {$regex : ?0}} ,{'url' : {$regex : ?0}}]}")
+	@Query("{'$or': [{'tag' : {$regex : ?0,$options : 'i'}} ,{'url' : {$regex : ?0,$options : 'i'}}]}")
 	public List<ResourceBean> findByTagORUrl(String searchText);
+	
+	public ResourceBean findByTag(String tag);
+	
+	public List<ResourceBean> findAll();
 }
