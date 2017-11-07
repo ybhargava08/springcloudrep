@@ -15,7 +15,7 @@ public class ResourceBean {
 	private String tag;
 	@Indexed(direction=IndexDirection.ASCENDING)
 	private String url;
-	private String requestBody,headers;
+	private String requestBody,headers,requestCategory;
 
 	@Transient
 	private String responseBody;
@@ -26,7 +26,8 @@ public class ResourceBean {
 	@Transient
 	private String statusCodeAndReason;
 	
-	
+	@Transient
+	private String urlCred;
 	private String requestType;
 	
 	public String getId() {
@@ -91,9 +92,16 @@ public class ResourceBean {
 	public void setLastExecutionDate(long lastExecutionDate) {
 		this.lastExecutionDate = lastExecutionDate;
 	}
-	
-	
-	
-	
-	
+	public String getRequestCategory() {
+		return requestCategory;
+	}
+	public void setRequestCategory(String requestCategory) {
+		this.requestCategory = requestCategory;
+	}
+	public String getUrlCred() {
+		return urlCred;
+	}
+	public void setUrlCred(String urlCred) {
+		this.urlCred = urlCred;
+	}	
 }
