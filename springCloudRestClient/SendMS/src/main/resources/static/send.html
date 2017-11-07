@@ -1,0 +1,117 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+    <title>SendRequest</title>
+    
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+  
+     <link href="css/main.css" type="text/css" rel="stylesheet"> 
+      <link href="css/RecentAndFrequentTagData.css" type="text/css" rel="stylesheet" >
+      <link href="css/UrlAuth.css" type="text/css" rel="stylesheet" >    
+          
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> 
+       
+ <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular.js"></script>
+<!--<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-animate.js"></script> -->
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.5.0/ui-bootstrap.min.js"></script>
+  <script src = "https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.5.0/ui-bootstrap-tpls.min.js"></script> 
+    
+    <script src = "https://cdnjs.cloudflare.com/ajax/libs/ngStorage/0.3.11/ngStorage.js"></script>
+      
+<script src="/webjars/sockjs-client/sockjs.min.js"></script>
+<script src="/webjars/stomp-websocket/stomp.min.js"></script>
+
+
+<script src ="js/appController.js"></script>
+<script src ="js/appService.js"></script>
+<script src ="js/customDirective.js"></script>
+<script src ="js/funcDef.js"></script>
+</head>
+<body ng-app="mainApp" ng-controller = "mainAppController" ng-click="closeAutoCompleteIfOpen($event)">
+<div class = "mainHeader">SOAP/REST CLIENT</div>
+
+<div id="urlAuthInvoke" ng-show="resourcebean.url.length>5" ng-click="showAuthBox('')">
+   <img id = "authImg" src = "images/auth.jpg" />
+   <img id="authtickImg" src = "images/green_tick.jpg" ng-show="showGreenTick" ng-init="showGreenTick=false"/>
+   </div>
+<div class="parent">
+  
+   <input type = "text" id = "urlSection" tooltip="this is a tooltip" 
+   placeholder="Enter URL here or start typing" maxlength="170" ng-model="resourcebean.url" 
+   ng-change="inputSearchText(resourcebean.url)"/>
+   
+   
+   <ul class="autoComplete" ng-style="autoCompleteResult.length>0?{'box-shadow': '0 0 5px 0 #969696'}:{'box-shadow':'none'}">
+   <li class="autoCompleteList" ng-repeat="data in autoCompleteResult | orderBy: '-lastExecutionDate'" ng-click="selectThis(data,$event)"
+    ng-mouseover="resourcebean.url=data.url"><span class="autoCompleteDataTag" ng-bind-html="highlightText(data.tag)">{{data.tag}}</span> 
+    (<span class="autoCompleteDataUrl" ng-bind-html="highlightText(data.url)">{{data.url}}</span>)</li>
+   </ul>
+   
+     <section id ="methodRadio">
+    <input type="radio" id="getRadio" name="selectRadio" class ="radio-Btn" ng-model="resourcebean.requestType" value="get" ng-checked="true" 
+    	ng-change="changeRequestType()"/>
+    <label for="getRadio" class ="methodType">GET</label>
+   
+    <input type="radio" id="postRadio" name="selectRadio" class ="radio-Btn" ng-model="resourcebean.requestType" value="post"/>
+    <label for="postRadio" class ="methodType">POST</label>
+   </section>
+    <br /><br />
+
+    <input type = "text" id = "tagUrl" placeholder="Enter Unique Service Name" ng-model = "resourcebean.tag" ng-change="hideShowUniqueIdSuggestion()"/>
+     <servicenamesuggestion></servicenamesuggestion>
+    
+   <textarea id="formheader" placeholder="Add Headers" ng-model="resourcebean.headers"></textarea>
+   
+
+   <textarea id ="contentSection" placeholder="Add Request Body Here" ng-model="resourcebean.requestBody" ng-show="resourcebean.requestType=='post'" ng-change="suggestServiceName()"></textarea>
+  
+   <div id ="responseStatus" ng-bind ="resourcebean.statusCodeAndReason" ng-show="responseStatusShow" 
+    ng-style="resourcebean.statusCodeAndReason.includes(200)?{'color':'#66ff33'}:{'color':'#e63900'}"></div>
+    
+   <textarea id ="responseSection" ng-model="resourcebean.responseBody" ng-show="responseShow"></textarea>
+   <button id = "sendButton" ng-click="send($event)">Send</button>
+   </div>
+   
+   <div class = "ulWrapper"> 
+  <ul class="RecentTagListData" ng-style="mostRecentList.length>0?{'display':'block','box-shadow':'10px 10px 5px #dcdcdc'}:{'display':'none','box-shadow':'none'}">
+  <li ng-repeat="recentData in mostRecentList | orderBy : '-lastExecutionDate' | limitTo : pageSize : beginIndex" ng-click="selectThis(recentData,$event)">
+  <span class="currentDateRecentData">{{recentData.currDate | date:'EEE,MMM-dd HH:mm:ss'}}</span>
+  <div class="recentListDataMainContent">
+  <span class = 'recentRequestType' 
+       ng-style="recentData.requestType=='get'?{'background':'#ffad33'}:{'background':'#99bbff'}">{{recentData.requestType}}</span>
+       <span class="recentListTag">{{ recentData.tag | limitTo: limitToFactor }}{{recentData.tag.length > limitToFactor ? '...' : ''}}</span>
+       <span class="recentTagRequestStatus" ng-style="recentData.statusCodeAndReason.includes(200)?{'background':'#39E185'}:{'background':'#E16939'}">
+       {{recentData.statusCodeAndReason.includes(200)?'Success':'Failure'}}</span>
+       </div>
+       </li>
+      
+  </ul>  
+ </div> 
+  
+  <img class="previousnextimage" id = "prev" src = "images/prev.jpg" ng-click="showPrevNext('prev')" ng-show="showPrevImg"/>
+       <img class = "previousnextimage" id = "next" src = "images/next.jpg" ng-click="showPrevNext('next')" ng-show="showNextImg"/>
+  
+  <ul class="TagData" ng-style="mostFrequent.length>0?{'display':'block','box-shadow':'10px 10px 5px #dcdcdc'}:{'display':'none','box-shadow':'none'}">
+  <li ng-repeat="data in mostFrequent | orderBy: '-counts'"><span class = 'mostFrequentRequestType' 
+       ng-style="data.requestType=='get'?{'background':'#ffad33'}:{'background':'#99bbff'}">{{data.requestType}}   </span>
+       <span class="mostFrequentTag" ng-click="selectThis(data,$event)">{{data.tag}}({{data.counts}})</span></li>
+  </ul>
+
+ <div class="loading" ng-show="isLoading"><img src = "images/loading.gif" /></div> 
+ 
+<div class="backGroundBlur" ng-show="isAuthNeeded"></div>
+ <div class = "urlAuth" ng-show="isAuthNeeded">
+ <span id="urlAuthClose" ng-click="closeUrlAuthDiv()">x</span>
+ <span id ="authInstructions" ng-bind="authInstructions"></span>
+ <input type="text" placeholder ="username" ng-model="authUserName" ng-keydown="$event.keyCode===13 && sendOrSaveAuthCred($event)"/>
+ <input type="password" placeholder="password" ng-model="authPassword" ng-keydown="$event.keyCode===13 && sendOrSaveAuthCred($event)"/>
+ <input type="checkbox" ng-model="rememberCred" ng-checked="rememberCred=rememberCred || false">Remember Credentials</input>
+ <button id = "authButton" ng-click="sendOrSaveAuthCred($event)">Submit</button>
+ </div>
+
+ 
+</body>
+</html>

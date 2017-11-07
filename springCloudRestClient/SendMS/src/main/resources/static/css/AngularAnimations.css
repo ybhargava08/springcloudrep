@@ -1,0 +1,4 @@
+.RecentTagListData li.ng-repeat{
+	left : -23%;
+	transition: 1s;
+}

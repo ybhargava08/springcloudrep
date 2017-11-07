@@ -1,0 +1,207 @@
+.ulWrapper{
+	transform-style:preserve-3d;
+	position: fixed;
+	top: 14%;
+	left: 71%;
+	width: 25%;
+	/* height: 41%; */
+	/* overflow-y: overlay; */
+	list-style: none;
+	/* box-shadow:5px 5px 5px #dcdcdc; */
+	perspective: 1000px;
+}
+
+.RecentTagListData{
+	perspective: 100px;
+	list-style-type: none;
+	/* overflow: overlay; */
+	padding: 0;
+}
+
+.TagData {
+    position: fixed;
+    top: 67%;
+    left: 71%;
+    width: 25%;
+    overflow: overlay;
+    list-style-type: none;
+    padding: 0;
+}
+
+
+.TagData li{
+	position : relative;
+	margin: 4% 2%;
+	padding: 2%;
+	font-size: 20px;
+	text-shadow: 1px 1px 0px rosybrown;
+	font-family:Verdana, Tahoma, Arial, Helvetica, sans-serif;
+		animation-duration : 1s;
+	animation-name : animateMostRecentItem;
+	
+}
+
+.TagData li:hover{
+	cursor: pointer;
+	transform : rotateX(25deg);
+	transition : all linear 0.5s;
+}
+
+.RecentTagListData li{
+	position : relative;
+	margin: 3% 0;
+	padding: 2%;
+	font-size: 20px;
+	font-family:Verdana, Tahoma, Arial, Helvetica, sans-serif;
+	box-shadow:5px 5px 5px #dcdcdc;
+	animation : animateAddRecentItem 1s ease-in-out;
+	overflow: overlay;
+}
+
+.RecentTagListData li:hover{
+	cursor : pointer;
+	transform : rotateX(5deg);
+	transition : all linear 0.5s;
+}
+
+.RecentTagListData:before{
+	content : 'Latest Requests :';
+	color: #969696;
+	font-size: 20px;
+	/* margin : 0 -9%; */
+	text-shadow: 1px 1px 0px rosybrown;
+	font-family:Verdana, Tahoma, Arial, Helvetica, sans-serif;
+}
+
+.recentListDataMainContent{
+	float:left;
+	width:100%;
+	position:relative;
+}
+
+.mostFrequentTag,.recentListTag{
+ word-wrap:break-word;
+ font-size:13px;
+}
+
+
+
+.TagData:before{
+	content : 'Most Frequent Requests :';
+	color: #969696;
+	font-size: 20px;
+	text-shadow: 1px 1px 0px rosybrown;
+	font-family:Verdana, Tahoma, Arial, Helvetica, sans-serif;
+	margin: 0 2%;
+}
+
+.mostFrequentRequestType{
+	font-size: 13px;
+	text-shadow: none;
+	color: white;
+	padding:1%;
+	margin :1% 10% 1% 0;
+	border: 1px solid #969696;
+	border-radius : 3px;
+}
+
+.recentRequestType,.recentTagRequestStatus{
+	font-size: 13px;
+	text-shadow: none;
+	color: white;
+	padding:1%;
+	margin :1%;
+	border: 1px solid #969696;
+	border-radius : 3px;
+}
+
+.recentTagRequestStatus{
+	float:right;
+}
+
+.currentDateRecentData{
+	float:left;
+	font-size: 12px;
+	text-shadow: none;
+	color: rosybrown;
+	/* margin :-7% 1%; */
+}
+
+
+.previousnextimage{
+	top: 60.5%;
+	width : 36px;
+	height: 36px;
+	position: fixed;
+	margin : 1px;
+	opacity: 0.5;
+	z-index : 2;
+}
+
+.previousnextimage:hover{
+	cursor: pointer;
+	width : 38px;
+	height: 38px;
+}
+
+#prev{
+	left: 72%;
+}
+
+#next{
+	right: 4%;
+}
+
+@keyframes animateMostRecentItem{
+	 0%{  
+	 	opacity: 0;
+    	transform: rotateX(-90deg);
+  		}
+   
+    50%{
+    	opacity: 1;
+ 	 	transform: none;
+       }
+}
+
+@keyframes animateAddRecentItem{
+	 0%{  
+	 	opacity: 0;
+    	transform: rotateX(90deg);
+  		}
+   
+    50%{
+    	opacity: 1;
+ 	 	transform: none;
+       }
+}
+
+@keyframes animateParentULFwd{
+	  0%{  
+	 	  opacity: 0;
+    	transform : rotateY(-180deg);
+  		}
+  	  50%{
+  	   opacity: 1;
+    	transform : none;
+  	  }	
+}
+
+@keyframes animateParentULBkwd{
+	 0%{  
+	 	  opacity: 0;
+    	transform : rotateY(180deg);
+  		}
+  	  50%{
+  	   opacity: 1;
+    	transform : none;
+  	  }	
+}
+
+.animateParentULforward{
+	animation: animateParentULFwd 2s ease-in-out forwards;
+}
+
+.animateParentULbackward{
+	animation: animateParentULBkwd 2s ease-in-out forwards;
+}
