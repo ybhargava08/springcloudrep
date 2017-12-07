@@ -43,7 +43,7 @@ eureka:
 ---
 
 spring:
- profiles: sendMS
+ profiles: sendMSLocal
  resources:
   static-locations: file:///C:/Users/ybhargava/SpringCloud/SendMS/src/main/resources/static/
   cache-period: 0
@@ -65,6 +65,29 @@ logging:
    springframework:
     web: DEBUG
  file: C:\Users\ybhargava\Desktop\springcloudtest_jars\logs\sendms.log
+---
+spring:
+ profiles: sendMS
+ mvc:
+  view:
+   prefix: /resources/static/
+   suffix: .html
+zuul:
+ routes:
+  retreivalandsavems:
+   path: /retreivalandsavems
+  sendms:
+   path: /sendms
+eureka:
+ instance:
+  hostname: sendms.cfapps.io
+  secure-port-enabled: true
+  non-secure-port-enabled: false
+  secure-port: 443
+  health-check-url: https://${eureka.instance.hostname}:${eureka.instance.secure-port}/health
+  status-page-url: https://${eureka.instance.hostname}:${eureka.instance.secure-port}/info
+  home-page-url: https://${eureka.instance.hostname}:${eureka.instance.secure-port}/
+   
 ---
 spring:
  profiles: retreivalandsaveMS
