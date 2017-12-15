@@ -55,7 +55,7 @@ server:
  port: 9020
 eureka:
  instance:
-  preferIpAddress: true
+  ipAddress: 192.168.99.100
   hostname: 192.168.99.100
   secure-port-enabled: false
   non-secure-port-enabled: true
@@ -125,7 +125,7 @@ server:
  port: 9010
 eureka:
  instance:
-  preferIpAddress: true
+  ipAddress: 192.168.99.100
   hostname: 192.168.99.100
   secure-port-enabled: false
   non-secure-port-enabled: true
