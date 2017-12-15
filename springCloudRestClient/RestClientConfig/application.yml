@@ -56,6 +56,8 @@ server:
 eureka:
  instance:
   hostname: 192.168.99.100
+  secure-port-enabled: false
+  non-secure-port-enabled: true
   health-check-url: http://${eureka.instance.hostname}:${server-port}/health
   status-page-url: http://${eureka.instance.hostname}:${server-port}/info
   home-page-url: http://${eureka.instance.hostname}:${server-port}/ 
@@ -123,6 +125,8 @@ server:
 eureka:
  instance:
   hostname: 192.168.99.100
+  secure-port-enabled: false
+  non-secure-port-enabled: true
   health-check-url: http://${eureka.instance.hostname}:${server-port}/health
   status-page-url: http://${eureka.instance.hostname}:${server-port}/info
   home-page-url: http://${eureka.instance.hostname}:${server-port}/
