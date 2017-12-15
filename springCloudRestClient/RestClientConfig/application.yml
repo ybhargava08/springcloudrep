@@ -56,9 +56,9 @@ server:
 eureka:
  instance:
   hostname: 192.168.99.100
-  health-check-url: https://${eureka.instance.hostname}:${server-port}/health
-  status-page-url: https://${eureka.instance.hostname}:${server-port}/info
-  home-page-url: https://${eureka.instance.hostname}:${server-port}/ 
+  health-check-url: http://${eureka.instance.hostname}:${server-port}/health
+  status-page-url: http://${eureka.instance.hostname}:${server-port}/info
+  home-page-url: http://${eureka.instance.hostname}:${server-port}/ 
 zuul:
  routes:
   retreivalandsavems:
@@ -123,9 +123,9 @@ server:
 eureka:
  instance:
   hostname: 192.168.99.100
-  health-check-url: https://${eureka.instance.hostname}:${server-port}/health
-  status-page-url: https://${eureka.instance.hostname}:${server-port}/info
-  home-page-url: https://${eureka.instance.hostname}:${server-port}/
+  health-check-url: http://${eureka.instance.hostname}:${server-port}/health
+  status-page-url: http://${eureka.instance.hostname}:${server-port}/info
+  home-page-url: http://${eureka.instance.hostname}:${server-port}/
 useTST: true
 ---
 spring:
