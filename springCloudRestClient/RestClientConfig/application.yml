@@ -53,6 +53,12 @@ spring:
    suffix: .html
 server:
  port: 9020
+eureka:
+ instance:
+  hostname: 192.168.99.100
+  health-check-url: https://${eureka.instance.hostname}:${server-port}/health
+  status-page-url: https://${eureka.instance.hostname}:${server-port}/info
+  home-page-url: https://${eureka.instance.hostname}:${server-port}/ 
 zuul:
  routes:
   retreivalandsavems:
@@ -114,6 +120,12 @@ spring:
 limit: 5
 server:
  port: 9010
+eureka:
+ instance:
+  hostname: 192.168.99.100
+  health-check-url: https://${eureka.instance.hostname}:${server-port}/health
+  status-page-url: https://${eureka.instance.hostname}:${server-port}/info
+  home-page-url: https://${eureka.instance.hostname}:${server-port}/
 useTST: true
 ---
 spring:
