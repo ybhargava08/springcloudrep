@@ -1,0 +1,40 @@
+version: '2'
+services:
+ mymongodb:
+  container_name: mymongodb
+  image: mongo
+  expose:
+   - 27017
+  ports:
+   - 27017:27017
+  volumes:
+   - mongoData:/data/db  
+ retreiveandsavems:
+  container_name: retreiveandsavems
+  build:
+   context: .
+   dockerfile: Dockerfilerns
+  image: ybhargav08/docker-rns
+  expose:
+   - 9010
+  ports:
+   - 9010:9010
+  links: 
+   - mymongodb:mymongodb
+  depends_on:
+   - mymongodb
+ sendms:
+  container_name: savems
+  build:
+   context: .
+   dockerfile: dockerfilesavems
+  image: ybhargav08/docker-savems 
+  expose:
+   - 9020
+  ports:
+   - 9020:9020
+  depends_on:
+   - retreiveandsavems  
+volumes:
+ mongoData:
+  external: true
