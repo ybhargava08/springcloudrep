@@ -56,6 +56,7 @@ server:
 eureka:
  instance:
   ipAddress: 192.168.99.100
+  preferIpAddress: true
   hostname: 192.168.99.100
   secure-port-enabled: false
   non-secure-port-enabled: true
@@ -126,6 +127,7 @@ server:
 eureka:
  instance:
   ipAddress: 192.168.99.100
+  preferIpAddress: true
   hostname: 192.168.99.100
   secure-port-enabled: false
   non-secure-port-enabled: true
