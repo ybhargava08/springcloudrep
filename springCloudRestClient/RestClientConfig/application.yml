@@ -44,9 +44,9 @@ eureka:
 
 spring:
  profiles: sendMSLocal
- resources:
-  static-locations: file:///C:/Users/ybhargava08/git/springcloudrep/springCloudRestClient/SendMS/src/main/resources/static/
-  cache-period: 0
+ #resources:
+  #static-locations: file:///C:/Users/ybhargava08/git/springcloudrep/springCloudRestClient/SendMS/src/main/resources/static/
+  #cache-period: 0
  mvc:
   view:
    prefix: /resources/static/
